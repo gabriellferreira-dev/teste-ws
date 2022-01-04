@@ -4,8 +4,9 @@
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.1",
-    "@testing-library/react": "^12.1.2",
+    "@testing-library/dom": "^8.11.1",
     "@testing-library/user-event": "^13.5.0",
+    "@testing-library/react": "^12.1.2",
     "@types/jest": "^27.4.0",
     "@types/node": "^16.11.18",
     "@types/react": "^17.0.38",
@@ -22,7 +23,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --verbose",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {

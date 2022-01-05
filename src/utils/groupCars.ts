@@ -4,7 +4,7 @@ export const groupCars = (list: Car[], groupBy: string | number) => {
   const data: Record<string, Car[]> = {};
 
   list.forEach((car) => {
-    if (data[car[groupBy]]) data[car[groupBy]] = [...data[car[groupBy]], car];
+    if (data[car[groupBy]]) data[car[groupBy]].push(car);
     else data[car[groupBy]] = [car];
   });
 

@@ -18,6 +18,7 @@ const Content: React.FC = () => {
       const url = 'http://demo0566678.mockable.io/test-ws-front';
 
       const data = await api.getCars(url);
+      console.log(data);
       setCars(data);
       const cars = groupCars(data.cars, groupBy as string);
       setGroupedCars(cars);
@@ -29,7 +30,7 @@ const Content: React.FC = () => {
   return (
     <Container>
       {Object.entries(groupedCars)?.map(([key, value], i) => {
-        return <Group key={`${key} + ${i}`} cars={value} />;
+        return <Group key={`${key} + ${i}`} title={key} cars={value} />;
       })}
     </Container>
   );

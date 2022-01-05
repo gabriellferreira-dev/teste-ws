@@ -1,7 +1,12 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import FilterOptions, { IFilterOptions } from '.';
-const optionsMock = ['Option 1', 'Option 2', 'Option 3', 'Option  4'];
+const optionsMock = [
+  { name: 'Option 1', value: 'option_1' },
+  { name: 'Option 2', value: 'option_2' },
+  { name: 'Option 3', value: 'option_3' },
+  { name: 'Option 4', value: 'option_4' },
+];
 
 describe('<FilterOptions />', () => {
   it('should have all options passed', () => {

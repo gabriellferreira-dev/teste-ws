@@ -1,9 +1,14 @@
 import React, { ChangeEvent } from 'react';
 import { Container } from './styles';
 
+interface IOption {
+  name: string;
+  value: string;
+}
+
 export interface IFilterOptions {
   id: string;
-  options: string[];
+  options: IOption[];
   defaultValue?: string;
   value?: string;
   onChange?: (event: ChangeEvent<HTMLSelectElement>) => void;
@@ -16,9 +21,9 @@ const FilterOptions: React.FC<IFilterOptions> = ({
   return (
     <Container {...attributes}>
       {options &&
-        options.map((value, i) => (
-          <option key={`value-${i}`} value={value}>
-            {value}
+        options.map((option, i) => (
+          <option key={`value-${i}`} value={option.value}>
+            {option.name}
           </option>
         ))}
     </Container>

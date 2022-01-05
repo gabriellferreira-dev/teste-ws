@@ -1,16 +1,34 @@
-import React, { ChangeEvent, useState } from 'react';
+import React, { ChangeEvent, useContext, useState } from 'react';
 import { Container } from './styles';
 
 import Logo from '../../assets/logo.png';
 import FilterOptions from '../FilterOptions';
+import { CarsContext } from '../../context/CarsProvider';
 
-const options = ['Marca', 'Modelo', 'Ano', 'Combustível', 'Portas'];
+const options = [
+  {
+    name: 'Marca',
+    value: 'marca_nome',
+  },
+  {
+    name: 'Ano',
+    value: 'ano',
+  },
+  {
+    name: 'Portas',
+    value: 'num_portas',
+  },
+  {
+    name: 'Combustível',
+    value: 'combustivel',
+  },
+];
 
 const Header: React.FC = () => {
-  const [orderBy, setOrderBy] = useState('marca');
+  const { setGroupBy } = useContext(CarsContext);
 
   const handleChange = (event: ChangeEvent<HTMLSelectElement>) => {
-    setOrderBy(event.target.value);
+    if (setGroupBy) setGroupBy(event.target.value);
   };
 
   return (

@@ -1,0 +1,26 @@
+module.exports = [
+  {
+    id: 1,
+    marca_id: 1,
+    marca_nome: 'TOYOTA',
+    nome_modelo: 'COROLLA XEI',
+    ano: 2016,
+    combustivel: 'flex',
+    num_portas: 4,
+    valor_fipe: 70.0,
+    cor: 'Azul',
+    timestamp_cadastro: 1636636150,
+  },
+  {
+    id: 2,
+    marca_id: 2,
+    marca_nome: 'FORD',
+    nome_modelo: 'Maverick',
+    ano: 1974,
+    combustivel: 'alcool',
+    num_portas: 2,
+    valor_fipe: 170.0,
+    cor: 'Azul',
+    timestamp_cadastro: 1636636150,
+  },
+];

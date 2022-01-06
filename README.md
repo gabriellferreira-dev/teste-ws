@@ -46,4 +46,5 @@ Ex:
 ## Deploy
 
   Pode acessar a aplicação em tempo real nesse link.
+  https://teste-ws.herokuapp.com/
 

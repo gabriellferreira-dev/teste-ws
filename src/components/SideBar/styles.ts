@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 
 interface ISideBar {
-  registering: boolean;
+  show: boolean;
 }
 
 export const Container = styled.div<ISideBar>`
@@ -15,8 +15,8 @@ export const Container = styled.div<ISideBar>`
   max-width: 0;
   transition: max-width 0.2s ease-in-out;
 
-  ${({ registering }) =>
-    registering &&
+  ${({ show }) =>
+    show &&
     css`
       max-width: 100%;
     `}

@@ -1,5 +1,6 @@
 import { FormikErrors, FormikTouched } from 'formik';
-import React from 'react';
+import React, { useContext } from 'react';
+import { CarsContext, FORM_DEFAULT_VALUES } from '../../context/CarsProvider';
 import { Car } from '../../interfaces/Car';
 import fuels from '../../utils/fuels';
 import makes from '../../utils/makes';
@@ -13,6 +14,8 @@ type Props = {
 };
 
 export const Form: React.FC<Props> = ({ errors, touched }) => {
+  const { setRegistering, setDefaultFormValues, registering, setEditing } =
+    useContext(CarsContext);
   return (
     <Container>
       <Field
@@ -69,8 +72,16 @@ export const Form: React.FC<Props> = ({ errors, touched }) => {
         type="number"
         inputError={!!errors.valor_fipe && touched.valor_fipe}
       />
-      <Button type="submit">Cadastrar</Button>
-      <Button type="reset" outline warning>
+      <Button type="submit">{registering ? 'Cadastrar' : 'Editar'}</Button>
+      <Button
+        type="button"
+        outline
+        warning
+        onClick={() => {
+          registering ? setRegistering(false) : setEditing(false);
+          setDefaultFormValues(FORM_DEFAULT_VALUES);
+        }}
+      >
         Cancelar
       </Button>
     </Container>

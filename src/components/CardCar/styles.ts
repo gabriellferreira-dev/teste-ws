@@ -12,7 +12,7 @@ export const Container = styled.div`
   justify-content: space-evenly;
 
   &:hover {
-    background-color: #f2bc0585;
+    background-color: rgba(0, 0, 0, 0.1);
   }
 
   &:not(:last-child) {
@@ -28,6 +28,7 @@ export const Container = styled.div`
   .car-color {
     font-size: 1.5rem;
     font-weight: 400;
+    text-transform: capitalize;
   }
 
   div {

@@ -1,13 +1,14 @@
-import { FC } from 'react';
+import { FC, ReactNode } from 'react';
 import NumberFormat from 'react-number-format';
 import { Car } from '../../interfaces/Car';
 import { Container } from './styles';
 
 export interface ICardCar {
   car: Car;
+  children?: ReactNode;
 }
 
-const CardCar: FC<ICardCar> = ({ car }: ICardCar) => {
+const CardCar: FC<ICardCar> = ({ car, children }: ICardCar) => {
   const fipeValue =
     car.valor_fipe < 1000 ? car.valor_fipe * 1000 : car.valor_fipe;
 
@@ -32,6 +33,7 @@ const CardCar: FC<ICardCar> = ({ car }: ICardCar) => {
           fixedDecimalScale
         />
       </p>
+      {children}
     </Container>
   );
 };

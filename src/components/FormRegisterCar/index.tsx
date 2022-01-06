@@ -1,23 +1,10 @@
-import { Formik, FormikBag, FormikHelpers } from 'formik';
+import { Formik, FormikHelpers } from 'formik';
 import { useContext } from 'react';
 import * as Yup from 'yup';
-import { CarsContext } from '../../context/CarsProvider';
+import { CarsContext, FORM_DEFAULT_VALUES } from '../../context/CarsProvider';
 import { Car } from '../../interfaces/Car';
 import makes from '../../utils/makes';
 import SideBar from '../SideBar';
-
-const initialValues: Car = {
-  marca_nome: '',
-  id: 0,
-  marca_id: 0,
-  nome_modelo: '',
-  ano: 2000,
-  combustivel: '',
-  num_portas: 0,
-  valor_fipe: 0,
-  cor: '',
-  timestamp_cadastro: 0,
-};
 
 export interface IMake {
   marca_id: number;
@@ -25,9 +12,28 @@ export interface IMake {
 }
 
 export const FormNewCar = () => {
-  const { cars, addCar, setRegistering } = useContext(CarsContext);
+  const {
+    cars,
+    addCar,
+    setRegistering,
+    setEditing,
+    defaultFormValues,
+    registering,
+    setDefaultFormValues,
+    editCar: handleEditCar,
+  } = useContext(CarsContext);
 
   const handleSubmit = (values: Car, actions: FormikHelpers<Car>) => {
+    if (registering) {
+      createCar(values);
+    } else {
+      editCar(values);
+    }
+    actions.resetForm();
+    setDefaultFormValues(FORM_DEFAULT_VALUES);
+  };
+
+  const createCar = (values: Car) => {
     const lastCar = cars.reduce((acc, value) =>
       acc.id > value.id ? acc : value,
     );
@@ -40,8 +46,18 @@ export const FormNewCar = () => {
     values.timestamp_cadastro = new Date().getTime();
     values.id = lastCar.id + 1;
     addCar(values);
-    actions.resetForm();
     setRegistering(false);
+  };
+
+  const editCar = (values: Car) => {
+    const toEdit = cars.find((car) => car.id === values.id);
+    const edited = { ...toEdit, ...values };
+    const carIndex = cars.indexOf(toEdit as Car);
+    const newCars = cars.slice();
+
+    newCars[carIndex] = edited;
+    handleEditCar(newCars);
+    setEditing(false);
   };
 
   const NewCarSchema = Yup.object().shape({
@@ -64,12 +80,10 @@ export const FormNewCar = () => {
 
   return (
     <Formik
-      initialValues={initialValues}
+      initialValues={defaultFormValues}
       onSubmit={handleSubmit}
-      onReset={() => {
-        setRegistering(false);
-      }}
       validationSchema={NewCarSchema}
+      enableReinitialize
     >
       {({ errors, touched }) => {
         return <SideBar errors={errors} touched={touched} />;

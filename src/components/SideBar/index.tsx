@@ -11,9 +11,9 @@ type Props = {
 };
 
 const SideBar: FC<Props> = ({ errors, touched }) => {
-  const { registering } = useContext(CarsContext);
+  const { registering, editing } = useContext(CarsContext);
   return (
-    <Container registering={registering as boolean}>
+    <Container show={registering || editing}>
       <Form errors={errors} touched={touched} />
     </Container>
   );

@@ -1,7 +1,8 @@
 import styled, { css } from 'styled-components';
 
-interface IStyleButton {
+export interface IStyleButton {
   icon?: boolean;
+  alert?: boolean;
   outline?: boolean;
   warning?: boolean;
 }
@@ -40,7 +41,7 @@ export const Container = styled.button<IStyleButton>`
       border: 1px solid #0066ff;
     `}
 
-    ${({ warning }) =>
+  ${({ warning }) =>
     warning &&
     css`
       color: #e65d25;
@@ -48,6 +49,25 @@ export const Container = styled.button<IStyleButton>`
 
       &:hover {
         background-color: #e65d255a;
+      }
+    `}
+
+  ${({ alert }) =>
+    alert &&
+    css`
+      color: #fff;
+      background-color: #f2bc05;
+
+      ${({ outline }: IStyleButton) =>
+        outline &&
+        css`
+          background-color: transparent;
+          border: 1px solid #f2bc05;
+          color: #f2bc05;
+        `}
+
+      &:hover {
+        background-color: #eed431;
       }
     `}
 `;

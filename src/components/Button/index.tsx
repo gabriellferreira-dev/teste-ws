@@ -1,12 +1,10 @@
 import { FC, FormEventHandler, ReactNode } from 'react';
-import { Container } from './styles';
+import { Container, IStyleButton } from './styles';
 import { IconType } from 'react-icons';
 
-export interface IButton {
+export interface IButton extends IStyleButton {
   children: ReactNode;
   Icon?: IconType;
-  outline?: boolean;
-  warning?: boolean;
   name?: string;
   value?: string;
   id?: string;

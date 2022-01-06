@@ -26,7 +26,6 @@ const Content: React.FC = () => {
   }, [setCars]);
 
   useEffect(() => {
-    console.log('grouped');
     const grouped = groupCars(cars, groupBy as string);
     setGroupedCars(grouped);
   }, [cars, groupBy]);

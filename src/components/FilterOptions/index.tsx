@@ -19,13 +19,16 @@ const FilterOptions: React.FC<IFilterOptions> = ({
   ...attributes
 }) => {
   return (
-    <Container {...attributes}>
-      {options &&
-        options.map((option, i) => (
-          <option key={`value-${i}`} value={option.value}>
-            {option.name}
-          </option>
-        ))}
+    <Container>
+      <label htmlFor="filterOptions">Ordenar por:</label>
+      <select {...attributes}>
+        {options &&
+          options.map((option, i) => (
+            <option key={`value-${i}`} value={option.value}>
+              {option.name}
+            </option>
+          ))}
+      </select>
     </Container>
   );
 };

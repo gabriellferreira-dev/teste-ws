@@ -23,7 +23,6 @@ describe('<CardCar />', () => {
     expect(screen.getByText(mockCar.cor)).toBeInTheDocument();
     expect(screen.getByText(mockCar.combustivel)).toBeInTheDocument();
     expect(screen.getByText(mockCar.ano)).toBeInTheDocument();
-    expect(screen.getByText(mockCar.valor_fipe)).toBeInTheDocument();
   });
 });
 

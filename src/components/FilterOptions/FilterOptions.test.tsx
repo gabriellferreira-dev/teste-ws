@@ -27,11 +27,11 @@ describe('<FilterOptions />', () => {
       onChange: onChangeFn,
     });
 
-    userEvent.selectOptions(screen.getByRole('combobox'), 'Option 2');
+    userEvent.selectOptions(screen.getByRole('combobox'), 'option_2');
 
     expect(onChangeFn).toBeCalled();
     expect(onChangeFn).toBeCalledTimes(1);
-    expect(screen.getByRole('combobox')).toHaveValue('Option 2');
+    expect(screen.getByRole('combobox')).toHaveValue('option_2');
   });
 });
 

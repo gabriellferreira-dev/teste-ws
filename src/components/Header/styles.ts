@@ -19,4 +19,14 @@ export const Container = styled.header`
     font-size: 1.8rem;
     margin: 0 10px;
   }
+
+  @media (max-width: 500px) {
+    flex-direction: column;
+    padding: 0;
+
+    p,
+    label {
+      display: none;
+    }
+  }
 `;

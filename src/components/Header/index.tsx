@@ -35,15 +35,12 @@ const Header: React.FC = () => {
     <Container>
       <img src={Logo} alt="Logo da empresa" />
       <p>Sistema de Gerenciamento de Veículos</p>
-      <label htmlFor="filterOptions">
-        Ordenar por:
-        <FilterOptions
-          id="filterOptions"
-          options={options}
-          onChange={handleChange}
-          defaultValue="Marca"
-        />
-      </label>
+      <FilterOptions
+        id="filterOptions"
+        options={options}
+        onChange={handleChange}
+        defaultValue="Marca"
+      />
     </Container>
   );
 };

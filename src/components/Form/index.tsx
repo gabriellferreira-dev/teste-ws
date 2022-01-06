@@ -70,6 +70,9 @@ export const Form: React.FC<Props> = ({ errors, touched }) => {
         inputError={!!errors.valor_fipe && touched.valor_fipe}
       />
       <Button type="submit">Cadastrar</Button>
+      <Button type="reset" outline warning>
+        Cancelar
+      </Button>
     </Container>
   );
 };

@@ -1,4 +1,4 @@
-import { Formik, FormikHelpers } from 'formik';
+import { Formik, FormikBag, FormikHelpers } from 'formik';
 import { useContext } from 'react';
 import * as Yup from 'yup';
 import { CarsContext } from '../../context/CarsProvider';
@@ -27,7 +27,7 @@ export interface IMake {
 export const FormNewCar = () => {
   const { cars, addCar, setRegistering } = useContext(CarsContext);
 
-  const handleSubmit = async (values: Car, actions: FormikHelpers<Car>) => {
+  const handleSubmit = (values: Car, actions: FormikHelpers<Car>) => {
     const lastCar = cars.reduce((acc, value) =>
       acc.id > value.id ? acc : value,
     );
@@ -66,6 +66,9 @@ export const FormNewCar = () => {
     <Formik
       initialValues={initialValues}
       onSubmit={handleSubmit}
+      onReset={() => {
+        setRegistering(false);
+      }}
       validationSchema={NewCarSchema}
     >
       {({ errors, touched }) => {

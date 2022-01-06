@@ -5,7 +5,7 @@ interface Props {
 }
 
 export const Container = styled.div<Props>`
-  margin-bottom: 10px;
+  margin-bottom: 2px;
 
   div {
     display: flex;

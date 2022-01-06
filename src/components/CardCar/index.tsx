@@ -1,4 +1,5 @@
 import { FC } from 'react';
+import NumberFormat from 'react-number-format';
 import { Car } from '../../interfaces/Car';
 import { Container } from './styles';
 
@@ -7,27 +8,30 @@ export interface ICardCar {
 }
 
 const CardCar: FC<ICardCar> = ({ car }: ICardCar) => {
-  function formatNumber(num: number) {
-    return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
-  }
-
-  const fipeValue = formatNumber(car.valor_fipe * 1000);
+  const fipeValue =
+    car.valor_fipe < 1000 ? car.valor_fipe * 1000 : car.valor_fipe;
 
   return (
     <Container>
-      <img src="" alt="" />
+      <p className="card-title">{car.nome_modelo}</p>
       <div>
-        <p className="card-title">{car.nome_modelo}</p>
-        <div>
-          <span>{car.ano}</span>
-          <div className="separator" />
-          <span>{car.combustivel}</span>
-          <div className="separator" />
-          <span>{car.num_portas} P</span>
-        </div>
-        <p className="car-color">{car.cor}</p>
-        <p>R$ {fipeValue}</p>
+        <span>{car.ano}</span>
+        <div className="separator" />
+        <span>{car.combustivel}</span>
+        <div className="separator" />
+        <span>{car.num_portas} P</span>
       </div>
+      <p className="car-color">{car.cor}</p>
+      <p>
+        <NumberFormat
+          prefix="R$ "
+          decimalScale={2}
+          value={fipeValue}
+          displayType="text"
+          thousandSeparator
+          fixedDecimalScale
+        />
+      </p>
     </Container>
   );
 };

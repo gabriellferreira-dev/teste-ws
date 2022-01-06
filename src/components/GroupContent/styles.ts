@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const Container = styled.div`
   display: flex;
   background-color: #fff;
-  height: 250px;
+  height: 200px;
   padding: 5px;
   overflow: none;
   overflow-x: scroll;

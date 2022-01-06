@@ -6,6 +6,7 @@ export interface IButton {
   children: ReactNode;
   Icon?: IconType;
   outline?: boolean;
+  warning?: boolean;
   name?: string;
   value?: string;
   id?: string;

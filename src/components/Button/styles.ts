@@ -2,6 +2,8 @@ import styled, { css } from 'styled-components';
 
 interface IStyleButton {
   icon?: boolean;
+  outline?: boolean;
+  warning?: boolean;
 }
 
 export const Container = styled.button<IStyleButton>`
@@ -28,6 +30,24 @@ export const Container = styled.button<IStyleButton>`
       svg {
         font-size: 2rem;
         margin-right: 5px;
+      }
+    `}
+
+  ${({ outline }) =>
+    outline &&
+    css`
+      background-color: transparent;
+      border: 1px solid #0066ff;
+    `}
+
+    ${({ warning }) =>
+    warning &&
+    css`
+      color: #e65d25;
+      border-color: #e65d25;
+
+      &:hover {
+        background-color: #e65d255a;
       }
     `}
 `;

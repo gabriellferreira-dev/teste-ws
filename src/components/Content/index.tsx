@@ -15,7 +15,7 @@ const Content: React.FC = () => {
 
   useEffect(() => {
     const getCars = async () => {
-      const url = 'http://demo0566678.mockable.io/test-ws-front';
+      const url = 'https://demo0566678.mockable.io/test-ws-front';
 
       const data = await api.getCars(url);
 

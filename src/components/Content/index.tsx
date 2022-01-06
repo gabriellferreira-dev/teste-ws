@@ -7,6 +7,7 @@ import { Car } from '../../interfaces/Car';
 import Group from '../Group';
 import NewCarButton from '../NewCarButton';
 import { FormNewCar } from '../FormRegisterCar';
+import SideBar from '../SideBar';
 
 const Content: React.FC = () => {
   const [groupedCars, setGroupedCars] = useState<Record<string, Car[]>>({});
@@ -33,10 +34,12 @@ const Content: React.FC = () => {
   return (
     <Container>
       <NewCarButton />
-      <FormNewCar />
       {Object.entries(groupedCars)?.map(([key, value], i) => {
         return <Group key={`${key} + ${i}`} title={key} cars={value} />;
       })}
+      <SideBar>
+        <FormNewCar />
+      </SideBar>
     </Container>
   );
 };

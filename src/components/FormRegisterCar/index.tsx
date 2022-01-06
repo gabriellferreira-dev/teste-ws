@@ -4,7 +4,7 @@ import * as Yup from 'yup';
 import { CarsContext, FORM_DEFAULT_VALUES } from '../../context/CarsProvider';
 import { Car } from '../../interfaces/Car';
 import makes from '../../utils/makes';
-import SideBar from '../SideBar';
+import { Form } from '../Form';
 
 export interface IMake {
   marca_id: number;
@@ -86,7 +86,7 @@ export const FormNewCar = () => {
       enableReinitialize
     >
       {({ errors, touched }) => {
-        return <SideBar errors={errors} touched={touched} />;
+        return <Form errors={errors} touched={touched} />;
       }}
     </Formik>
   );

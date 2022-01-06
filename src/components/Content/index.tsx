@@ -5,30 +5,34 @@ import { groupCars } from '../../utils/groupCars';
 import { CarsContext } from '../../context/CarsProvider';
 import { Car } from '../../interfaces/Car';
 import Group from '../Group';
+import NewCarButton from '../NewCarButton';
+import { FormNewCar } from '../FormRegisterCar';
 
 const Content: React.FC = () => {
-  const [cars, setCars] = useState([]);
   const [groupedCars, setGroupedCars] = useState<Record<string, Car[]>>({});
-  const { groupBy } = useContext(CarsContext);
-
-  console.log(groupBy);
+  const { groupBy, setCars, cars } = useContext(CarsContext);
 
   useEffect(() => {
     const getCars = async () => {
       const url = 'http://demo0566678.mockable.io/test-ws-front';
 
       const data = await api.getCars(url);
-      console.log(data);
-      setCars(data);
-      const cars = groupCars(data.cars, groupBy as string);
-      setGroupedCars(cars);
+
+      setCars(data.cars);
     };
 
     getCars();
-  }, [groupBy]);
+  }, [setCars]);
+
+  useEffect(() => {
+    const groupedCars = groupCars(cars, groupBy as string);
+    setGroupedCars(groupedCars);
+  }, [cars, groupBy]);
 
   return (
     <Container>
+      <NewCarButton />
+      <FormNewCar />
       {Object.entries(groupedCars)?.map(([key, value], i) => {
         return <Group key={`${key} + ${i}`} title={key} cars={value} />;
       })}

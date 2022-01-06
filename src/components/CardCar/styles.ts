@@ -8,6 +8,11 @@ export const Container = styled.div`
   height: 100%;
   background: #f8f8f7;
   position: relative;
+  transition: opacity 0.2s ease;
+
+  &:hover {
+    opacity: 0.9;
+  }
 
   &:not(:last-child) {
     margin-right: 5px;

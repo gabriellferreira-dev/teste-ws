@@ -8,7 +8,6 @@ export interface IGroup {
 }
 
 const Group: React.FC<IGroup> = ({ cars, title }: IGroup) => {
-  console.log(cars);
   return (
     <Container data-testid="group-cars">
       <p className="group-title">{title}</p>
